@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class 7 Math Practice</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f4ff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .box {
+      background: white;
+      max-width: 450px;
+      margin: 30px auto;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px #cccccc;
+    }
+
+    h1 {
+      color: #2446a8;
+    }
+
+    button {
+      background: #2446a8;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      margin: 8px;
+    }
+
+    input {
+      padding: 12px;
+      width: 80%;
+      font-size: 18px;
+      border: 1px solid #aaa;
+      border-radius: 8px;
+    }
+
+    #result {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+    <h1>📚 Class 7 Math Practice</h1>
+    <p>गणित सीखें और सवाल हल करें!</p>
+
+    <h3 id="question">5 + 7 = ?</h3>
+
+    <input id="answer" type="number"
+           placeholder="अपना उत्तर लिखें">
+
+    <br>
+
+    <button onclick="checkAnswer()">उत्तर जाँचें</button>
+    <button onclick="newQuestion()">अगला सवाल</button>
+
+    <p id="result"></p>
+    <p>सही उत्तर: <span id="score">0</span></p>
+  </div>
+
+  <script>
+    let a = 5;
+    let b = 7;
+    let score = 0;
+
+    function newQuestion() {
+      a = Math.floor(Math.random() * 20) + 1;
+      b = Math.floor(Math.random() * 20) + 1;
+
+      document.getElementById("question").textContent =
+        a + " + " + b + " = ?";
+
+      document.getElementById("answer").value = "";
+      document.getElementById("result").textContent = "";
+    }
+
+    function checkAnswer() {
+      const value = document.getElementById("answer").value;
+      const result = document.getElementById("result");
+
+      if (value === "") {
+        result.textContent = "पहले अपना उत्तर लिखें!";
+        return;
+      }
+
+      if (Number(value) === a + b) {
+        result.textContent = "🎉 बहुत बढ़िया! सही उत्तर!";
+        score++;
+        document.getElementById("score").textContent = score;
+      } else {
+        result.textContent = "❌ गलत उत्तर। फिर से कोशिश करें!";
+      }
+    }
+  </script>
+
+</body>
+</html>
